@@ -1,0 +1,27 @@
+host jumphost
+  IdentityFile ~/.ssh/id_rsa
+  User austind
+  Hostname jumphost.example.com
+  Port 22
+  ProxyCommand none
+  PreferredAuthentications publickey
+
+host *.github.com
+  ProxyCommand none
+
+host github.com
+  ProxyCommand none
+
+host 10.1.10.*
+  ProxyCommand none
+
+host 192.*
+  ProxyCommand none
+
+host *
+  ProxyCommand ssh -W %h:%p -q austind@jumphost
+  KexAlgorithms=+diffie-hellman-group1-sha1
+  ControlMaster auto
+  ControlPath  ~/.ssh/sockets/%r@%h-%p
+  ControlPersist 600
+  PreferredAuthentications keyboard-interactive  
