@@ -25,3 +25,12 @@ function jumphost() {
     fi
     return
 }
+
+function oui() {
+    OUIDB='/var/lib/ieee-data/oui.txt'
+    MAC=$(echo $1 | awk '{print tolower($0)}' | sed 's/[^A-Za-z0-9]//g')
+    OUI=${MAC::6}
+    VENDOR=$(grep -i "$OUI" $OUIDB | awk '{$1=$2=$3=""; print $0}')
+    echo $VENDOR
+    return
+}
