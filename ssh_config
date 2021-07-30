@@ -5,6 +5,7 @@ host jumphost
   Port 22
   ProxyCommand none
   PreferredAuthentications publickey
+  SendEnv SSHPASS
 
 host *.github.com
   ProxyCommand none
