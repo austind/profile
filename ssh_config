@@ -25,4 +25,5 @@ host *
   ControlMaster auto
   ControlPath  ~/.ssh/sockets/%r@%h-%p
   ControlPersist 600
-  PreferredAuthentications keyboard-interactive  
+  PreferredAuthentications keyboard-interactive
+  StrictHostKeyChecking no # Also add this to the jumphost's ~/.ssh/config
